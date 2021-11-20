@@ -36,7 +36,7 @@ Para copiar o projeto, utilize os comandos:
   # Clonar o repositório
   ❯ git clone  https://github.com/panhavsilva/ate-passar-app.git
   # Entrar no diretório
-  ❯ cd ate-passar-app.git
+  ❯ cd ate-passar-app
 ``` 
 ## 🔥 Executando a aplicação no seu terminal
 ```bash
