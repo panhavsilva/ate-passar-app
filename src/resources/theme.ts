@@ -13,6 +13,6 @@ export const theme: DefaultTheme = {
     darkPurple: '#6F1265',
     red: '#FF4949',
     green: '#5DF888',
-    white: '#FFF9FE',
+    white: '#FFFFFF',
   },
 }
