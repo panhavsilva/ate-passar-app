@@ -1,7 +1,9 @@
+import { Nav } from './nav'
+
 export function App () {
   return (
     <>
-      <h1>Até Passar App</h1>
+      <Nav />
     </>
   )
 }
