@@ -1,34 +1,5 @@
-import styled, { css } from 'styled-components/macro'
 import logo from './logo-nav.svg'
-
-const NavStyled = styled.nav`${({ theme }) => css`
-  align-items: center;
-  background: ${theme.colors.white};
-  border-bottom: 2px solid ${theme.colors.lightGray};
-  display: grid;
-  height: 83px;
-  grid-template-columns: 290px 1fr;
-  width: 100%;
-`}`
-const Logo = styled.img`
-  margin-left: 46px;
-`
-const DivUser = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  margin-right: 166px;
-`
-const Avatar = styled.img`
-  border-radius: 50%;
-  height: 36px;
-  margin-right: 11px;
-  width: 36px;
-`
-const UserName = styled.p`${({ theme }) => css`
-  color: ${theme.colors.gray};
-  font-size: 1.2rem;
-  line-height: 24px;
-`}`
+import { NavStyled, Logo, DivUser, Avatar, UserName } from './nav-styled'
 
 export function Nav () {
   return (
