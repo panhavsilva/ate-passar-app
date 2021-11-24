@@ -23,6 +23,6 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: 'Poppins', sans-serif;
-    background: ${({ theme }) => theme.colors.lightPurple};
+    background: ${({ theme }) => theme.colors.background};
   }
 `

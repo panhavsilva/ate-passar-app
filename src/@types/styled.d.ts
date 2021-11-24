@@ -5,6 +5,7 @@ declare module 'styled-components' {
       secondary: string,
       gradient: string,
       gradientSecondary: string,
+      background: string,
       gray: string,
       lightGray: string,
       purple: string,
