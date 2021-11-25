@@ -10,16 +10,18 @@
     "lint": "eslint src --ext ts,tsx --no-eslintrc --config .eslintrc-default.json",
     "lint:fix": "yarn lint --fix",
     "type-check": "tsc --project tsconfig.json --pretty --noEmit",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "@types/jest": "^26.0.15",
-    "@types/node": "^12.0.0",
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
+    "@testing-library/jest-dom": "5.15.1",
+    "@testing-library/react": "12.1.2",
+    "@testing-library/user-event": "13.5.0",
+    "@types/jest": "27.0.3",
+    "@types/node": "16.11.10",
+    "@types/react": "17.0.37",
+    "@types/react-dom": "17.0.11",
     "@types/styled-components": "5.1.15",
     "babel-eslint": "10.1.0",
     "eslint-config-standard": "16.0.3",
@@ -40,7 +42,17 @@
     "web-vitals": "^1.0.1"
   },
   "eslintConfig": {
-    "extends": "./.eslintrc.json"
+    "extends": "./.eslintrc.json",
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
+    ]
   },
   "browserslist": {
     "production": [
@@ -53,5 +65,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@storybook/addon-actions": "^6.3.12",
+    "@storybook/addon-essentials": "^6.3.12",
+    "@storybook/addon-links": "^6.3.12",
+    "@storybook/node-logger": "^6.3.12",
+    "@storybook/preset-create-react-app": "^3.2.0",
+    "@storybook/react": "^6.3.12"
   }
 }
