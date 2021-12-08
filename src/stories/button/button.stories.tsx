@@ -4,32 +4,26 @@ import { Button } from './Button'
 export default {
   title: 'Example/Button',
   component: Button,
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
 } as ComponentMeta<typeof Button>
 
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />
 
 export const Primary = Template.bind({})
 Primary.args = {
-  primary: true,
-  label: 'Button',
-}
-
-export const Secondary = Template.bind({})
-Secondary.args = {
+  type: 'primary',
   label: 'Button',
 }
 
 export const Large = Template.bind({})
 Large.args = {
+  type: 'primary',
   size: 'large',
   label: 'Button',
 }
 
 export const Small = Template.bind({})
 Small.args = {
+  type: 'red',
   size: 'small',
-  label: 'Button',
+  label: '>',
 }
