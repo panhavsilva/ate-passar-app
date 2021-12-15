@@ -1,29 +1,44 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import { Button } from './Button'
+import { ButtonStorybook } from './button-storybook'
 
 export default {
   title: 'Example/Button',
-  component: Button,
-} as ComponentMeta<typeof Button>
+  component: ButtonStorybook,
+} as ComponentMeta<typeof ButtonStorybook>
 
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />
+const Template: ComponentStory<typeof ButtonStorybook> = (args) => <ButtonStorybook {...args} />
 
-export const Primary = Template.bind({})
-Primary.args = {
-  type: 'primary',
+export const ExtraSmall = Template.bind({})
+ExtraSmall.args = {
+  size: 'extraSmall',
+  shadow: 'off',
+  label: 'B',
+}
+
+export const Small = Template.bind({})
+Small.args = {
+  size: 'small',
+  shadow: 'off',
+  label: 'But',
+}
+
+export const Midium = Template.bind({})
+Midium.args = {
+  size: 'medium',
+  shadow: 'off',
   label: 'Button',
 }
 
 export const Large = Template.bind({})
 Large.args = {
-  type: 'primary',
   size: 'large',
-  label: 'Button',
+  shadow: 'off',
+  label: 'Button Large',
 }
 
-export const Small = Template.bind({})
-Small.args = {
-  type: 'red',
-  size: 'small',
-  label: '>',
+export const ExtraLarge = Template.bind({})
+ExtraLarge.args = {
+  size: 'extraLarge',
+  shadow: 'off',
+  label: 'Button Extra Large',
 }

@@ -8,11 +8,10 @@ export default {
   component: Page,
 } as ComponentMeta<typeof Page>
 
-const Template: ComponentStory<typeof Page> = (args) => <Page {...args} />
+const Template: ComponentStory<typeof Page> = () => <Page />
 
 export const LoggedIn = Template.bind({})
 LoggedIn.args = {
-  // More on composing args: https://storybook.js.org/docs/react/writing-stories/args#args-composition
   ...HeaderStories.LoggedIn.args,
 }
 
