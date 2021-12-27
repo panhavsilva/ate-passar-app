@@ -49,7 +49,7 @@ const boxShadow = {
 const ButtonDefault = styled.button<ButtonProps>`
   border: 0;
   border-radius: 100px;
-  color: white;
+  color: ${theme.colors.white};
   cursor: pointer;
   display: inline-block;
   font-family: 'Poppins', sans-serif;

@@ -1,15 +1,15 @@
-import { BackgroundButtonTertiary, TextButtonTertiary, ButtonProps } from './button-style'
+import * as B from './button-style'
 
-type Props = ButtonProps & {
+type Props = B.ButtonProps & {
   children: string,
 }
 
 export function ButtonTertiary ({ children, size, shadow }:Props) {
   return (
-    <BackgroundButtonTertiary size={size} shadow={shadow}>
-      <TextButtonTertiary size={size} shadow={shadow}>
+    <B.BackgroundButtonTertiary size={size} shadow={shadow}>
+      <B.TextButtonTertiary size={size} shadow={shadow}>
         {children}
-      </TextButtonTertiary>
-    </BackgroundButtonTertiary>
+      </B.TextButtonTertiary>
+    </B.BackgroundButtonTertiary>
   )
 }

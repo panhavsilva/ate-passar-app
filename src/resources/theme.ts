@@ -2,6 +2,7 @@ import { DefaultTheme } from 'styled-components'
 
 export const theme: DefaultTheme = {
   colors: {
+    background: '#FFF9FE',
     primary: '#FD749B',
     secondary: '#281AC8',
     gradient: 'linear-gradient(#fd749b, #281ac8)',
@@ -13,6 +14,6 @@ export const theme: DefaultTheme = {
     darkPurple: '#6F1265',
     red: '#FF4949',
     green: '#5DF888',
-    white: '#FFF9FE',
+    white: '#FFF',
   },
 }
