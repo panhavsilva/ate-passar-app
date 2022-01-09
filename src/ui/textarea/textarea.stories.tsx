@@ -1,9 +1,11 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { themeStyleDecorator } from 'resources/storybook-decorators'
 import { TextareaStorybook } from './textarea-storybook'
 
 export default {
   title: 'Example/Textarea',
   component: TextareaStorybook,
+  decorators: [themeStyleDecorator],
 } as ComponentMeta<typeof TextareaStorybook >
 
 const Template: ComponentStory<typeof TextareaStorybook> = (args) => {
@@ -12,13 +14,8 @@ const Template: ComponentStory<typeof TextareaStorybook> = (args) => {
   )
 }
 
-export const Default = Template.bind({})
-Default.args = {
-  placeholder: 'Faça suas anotações aqui!',
-}
-
-export const Label = Template.bind({})
-Label.args = {
+export const Textarea = Template.bind({})
+Textarea.args = {
   placeholder: 'Faça suas anotações aqui!',
   label: 'Anotações',
 }

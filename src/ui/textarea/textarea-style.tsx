@@ -1,16 +1,15 @@
 import styled from 'styled-components/macro'
-import { theme } from '../../resources/theme'
 
 type TextareaProps = {
   placeholder: string,
-  label?: string,
+  label: string,
 }
 
-export const Textarea = styled.textarea`
-  background: ${theme.colors.white};
-  border: 1px solid ${theme.colors.lightGray};
+const Textarea = styled.textarea`
+  background: ${(props) => props.theme.colors.white};
+  border: 1px solid ${(props) => props.theme.colors.lightGray};
   border-radius: 10px;
-  color: ${theme.colors.gray};
+  color: ${(props) => props.theme.colors.gray};
   font-family: 'Poppins', sans-serif;
   font-size: 12px;
   width: 288px;
@@ -20,37 +19,29 @@ export const Textarea = styled.textarea`
 
   &:focus {
     outline: none;
-    border: 1px solid ${theme.colors.lightPurple};
+    border: 1px solid ${(props) => props.theme.colors.purple};
   }
 `
-export const Label = styled.label`
-  color: ${theme.colors.gray};
+const Label = styled.label`
+  color: ${(props) => props.theme.colors.gray};
   font-family: 'Poppins', sans-serif;
   font-size: 14px;
   line-height: 16px;
   padding: 8px 0px;
 `
-export const ContainerTextearea = styled.div`
+const ContainerTextearea = styled.div`
   display: grid;
   grid-template-columns: 114px 1fr;
 `
 
 export const TextareaDefault = ({ placeholder, label }: TextareaProps) => {
-  if (label) {
-    return (
-      <ContainerTextearea>
-        <Label>{label}</Label>
-        <Textarea
-          maxLength={200}
-          placeholder={placeholder}
-        />
-      </ContainerTextearea>
-    )
-  }
   return (
-    <Textarea
-      maxLength={200}
-      placeholder={placeholder}
-    />
+    <ContainerTextearea>
+      <Label>{label}</Label>
+      <Textarea
+        maxLength={200}
+        placeholder={placeholder}
+      />
+    </ContainerTextearea>
   )
 }
