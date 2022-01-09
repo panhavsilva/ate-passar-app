@@ -2,7 +2,7 @@ import { SelectFooter, SelectDefault, Options } from './select'
 import { SelectColors } from './select-colors'
 
 type SelectPropsStoryBook = {
-  type: 'footer' | 'default',
+  type: 'footer' | 'default' | 'color',
   options: Options[],
   placeholder: string,
 }
@@ -34,6 +34,11 @@ export const SelectStorybook = ({
       />
     )
   }
+  if (type === 'color') {
+    return (
+      <SelectColors />
+    )
+  }
   return (
     <SelectDefault
       options={options}
@@ -41,5 +46,3 @@ export const SelectStorybook = ({
     />
   )
 }
-
-export const SelectColor = () => <SelectColors />

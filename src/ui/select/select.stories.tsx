@@ -1,9 +1,11 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import { SelectStorybook, SelectColor } from './select-storybook'
+import { themeStyleDecorator } from 'resources/storybook-decorators'
+import { SelectStorybook } from './select-storybook'
 
 export default {
   title: 'Example/Select',
   component: SelectStorybook,
+  decorators: [themeStyleDecorator],
 } as ComponentMeta<typeof SelectStorybook >
 
 const data = [
@@ -13,20 +15,10 @@ const data = [
 ]
 
 const Template: ComponentStory<typeof SelectStorybook> = (args) => <SelectStorybook {...args} />
-const Template2: ComponentStory<typeof SelectColor> = () => <SelectColor />
 
-export const SelectFooter = Template.bind({})
-SelectFooter.args = {
-  type: 'footer',
-  options: data,
-  placeholder: 'Matéria',
-}
-
-export const SelectDefault = Template.bind({})
-SelectDefault.args = {
+export const Select = Template.bind({})
+Select.args = {
   type: 'default',
   options: data,
   placeholder: 'Matéria',
 }
-
-export const SelectColors = Template2.bind({})

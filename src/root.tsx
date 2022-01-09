@@ -1,6 +1,7 @@
-import { ThemeProvider, createGlobalStyle } from 'styled-components'
+import { ThemeProvider } from 'styled-components'
 import { App } from './app'
 import { theme } from 'resources/theme'
+import { GlobalStyle } from './global-styles'
 import 'normalize.css'
 
 export function Root () {
@@ -11,17 +12,3 @@ export function Root () {
     </ThemeProvider>
   )
 }
-
-const GlobalStyle = createGlobalStyle`
-  * {
-    box-sizing: border-box;
-  }
-
-  html {
-    font-size: 62.5%;
-  }
-
-  body {
-    font-family: 'Poppins', sans-serif;
-  }
-`

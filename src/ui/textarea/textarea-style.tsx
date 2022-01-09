@@ -3,7 +3,7 @@ import { theme } from '../../resources/theme'
 
 type TextareaProps = {
   placeholder: string,
-  label: string,
+  label?: string,
 }
 
 export const Textarea = styled.textarea`
@@ -36,13 +36,21 @@ export const ContainerTextearea = styled.div`
 `
 
 export const TextareaDefault = ({ placeholder, label }: TextareaProps) => {
+  if (label) {
+    return (
+      <ContainerTextearea>
+        <Label>{label}</Label>
+        <Textarea
+          maxLength={200}
+          placeholder={placeholder}
+        />
+      </ContainerTextearea>
+    )
+  }
   return (
-    <ContainerTextearea>
-      <Label>{label}</Label>
-      <Textarea
-        maxLength={200}
-        placeholder={placeholder}
-      />
-    </ContainerTextearea>
+    <Textarea
+      maxLength={200}
+      placeholder={placeholder}
+    />
   )
 }

@@ -1,5 +1,4 @@
 import styled from 'styled-components/macro'
-import { theme } from '../../resources/theme'
 
 export type ButtonProps = {
   size: 'extraSmall' | 'small' | 'medium' | 'large' | 'extraLarge',
@@ -49,13 +48,12 @@ const boxShadow = {
 const ButtonDefault = styled.button<ButtonProps>`
   border: 0;
   border-radius: 100px;
-  color: ${theme.colors.white};
+  color: ${(props) => props.theme.colors.white};
   cursor: pointer;
   display: inline-block;
   font-family: 'Poppins', sans-serif;
-  font-size: 18px;
   font-weight: 700;
-  line-height: 1;
+  line-height: 18px;
   padding: 13px;
   text-align: center;
 
@@ -63,8 +61,8 @@ const ButtonDefault = styled.button<ButtonProps>`
   box-shadow: ${(props) => boxShadow[props.shadow]};
   font-size: ${(props) => fontSize[props.size]};
   height: ${(props) => height[props.size]};
-  padding: ${(props) => padding[props.size]};
   min-width: ${(props) => width[props.size]};
+  padding: ${(props) => padding[props.size]};
 
   &:hover {
     opacity: 0.8;
@@ -73,23 +71,23 @@ const ButtonDefault = styled.button<ButtonProps>`
 `
 
 export const ButtonPrimary = styled(ButtonDefault)`
-  background-image: ${theme.colors.gradient};
+  background-image: ${(props) => props.theme.colors.gradient};
 `
 
 export const ButtonRed = styled(ButtonDefault)<ButtonProps>`
-  background-color: ${theme.colors.red};
+  background-color: ${(props) => props.theme.colors.red};
 `
 
 export const ButtonSecondary = styled(ButtonDefault)<ButtonProps>`
-  background-image: ${theme.colors.gradientSecondary};
+  background-image: ${(props) => props.theme.colors.gradientSecondary};
 `
 
 export const BackgroundButtonTertiary = styled(ButtonDefault)`
-  background-color: ${theme.colors.white};
+  background-color: ${(props) => props.theme.colors.white};
   display: flex;
 `
 export const TextButtonTertiary = styled.div<ButtonProps>`
-  background-image: ${theme.colors.gradientSecondary};
+  background-image: ${(props) => props.theme.colors.gradientSecondary};
   border-radius: ${(props) => borderRadius[props.size]};
   height: 100%;
   margin: 0px;

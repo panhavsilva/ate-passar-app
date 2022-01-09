@@ -15,5 +15,10 @@ const Template: ComponentStory<typeof TextareaStorybook> = (args) => {
 export const Default = Template.bind({})
 Default.args = {
   placeholder: 'Faça suas anotações aqui!',
+}
+
+export const Label = Template.bind({})
+Label.args = {
+  placeholder: 'Faça suas anotações aqui!',
   label: 'Anotações',
 }
