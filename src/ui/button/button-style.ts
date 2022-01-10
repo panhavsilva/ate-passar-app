@@ -3,6 +3,7 @@ import styled from 'styled-components/macro'
 export type ButtonProps = {
   size: 'extraSmall' | 'small' | 'medium' | 'large' | 'extraLarge',
   shadow: 'on' | 'off',
+  onClick?: () => void,
 }
 
 const borderRadius = {
@@ -86,6 +87,7 @@ export const BackgroundButtonTertiary = styled(ButtonDefault)`
   background-color: ${(props) => props.theme.colors.white};
   display: flex;
 `
+
 export const TextButtonTertiary = styled.div<ButtonProps>`
   background-image: ${(props) => props.theme.colors.gradientSecondary};
   border-radius: ${(props) => borderRadius[props.size]};

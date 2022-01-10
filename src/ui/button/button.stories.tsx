@@ -6,6 +6,7 @@ export default {
   title: 'Example/Button',
   component: ButtonStorybook,
   decorators: [themeStyleDecorator],
+  argTypes: { onClick: { action: 'clicked' } },
 } as ComponentMeta<typeof ButtonStorybook>
 
 const Template: ComponentStory<typeof ButtonStorybook> = (args) => <ButtonStorybook {...args} />
