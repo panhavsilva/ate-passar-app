@@ -10,11 +10,44 @@ export type SelectProps = {
   options: Options[],
   placeholder: string,
   className?: string,
+  label?: string,
 }
 
-export const SelectDefaultRaw = ({ options, placeholder, className }: SelectProps) => {
+const Label = styled.label`
+  color: ${(props) => props.theme.colors.gray};
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  line-height: 16px;
+  padding: 8px 0px;
+`
+const ContainerSelect = styled.div`
+  display: grid;
+  grid-template-columns: 114px 1fr;
+`
+export const SelectDefaultRaw = ({ options, placeholder, className, label }: SelectProps) => {
   const theme = useTheme()
 
+  if (label) {
+    return (
+      <ContainerSelect>
+        <Label>{label}</Label>
+        <Select
+          classNamePrefix='react-select'
+          className={className}
+          placeholder={placeholder}
+          options={options}
+          theme={(t) => ({
+            ...t,
+            colors: {
+              ...t.colors,
+              primary25: `${theme.colors.lightPurple}`,
+              primary: `${theme.colors.purple}`,
+            },
+          })}
+        />
+      </ContainerSelect>
+    )
+  }
   return (
     <Select
       classNamePrefix='react-select'

@@ -4,6 +4,7 @@ import { SelectColors } from './select-colors'
 type SelectPropsStoryBook = {
   type: 'footer' | 'default' | 'color',
   options: Options[],
+  label?: string,
   placeholder: string,
 }
 
@@ -17,12 +18,14 @@ export const SelectStorybook = ({
   type = 'default',
   options = data,
   placeholder = 'Matéria',
+  label,
 }: SelectPropsStoryBook) => {
   if (type === 'footer') {
     return (
       <SelectFooter
         options={options}
         placeholder={placeholder}
+        label={label}
       />
     )
   }
@@ -31,18 +34,22 @@ export const SelectStorybook = ({
       <SelectDefault
         options={options}
         placeholder={placeholder}
+        label={label}
       />
     )
   }
   if (type === 'color') {
     return (
-      <SelectColors />
+      <SelectColors
+        label={label}
+      />
     )
   }
   return (
     <SelectDefault
       options={options}
       placeholder={placeholder}
+      label={label}
     />
   )
 }

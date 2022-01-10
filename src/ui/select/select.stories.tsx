@@ -19,6 +19,7 @@ const Template: ComponentStory<typeof SelectStorybook> = (args) => <SelectStoryb
 export const Select = Template.bind({})
 Select.args = {
   type: 'default',
+  label: 'Matéria',
   options: data,
   placeholder: 'Matéria',
 }

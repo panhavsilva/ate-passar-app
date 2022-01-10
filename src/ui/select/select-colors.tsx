@@ -4,6 +4,7 @@ import Select, { StylesConfig } from 'react-select'
 
 type SelectProps = {
   className?: string;
+  label?: string;
 }
 
 type ColourOption = {
@@ -79,7 +80,33 @@ const optionStyles: StylesConfig<ColourOption> = {
   }),
 }
 
-const SelectColorsRaw = ({ className }: SelectProps) => {
+const Label = styled.label`
+  color: ${(props) => props.theme.colors.gray};
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  line-height: 16px;
+  padding: 8px 0px;
+`
+const ContainerSelect = styled.div`
+  display: grid;
+  grid-template-columns: 114px 1fr;
+`
+
+const SelectColorsRaw = ({ className, label }: SelectProps) => {
+  if (label) {
+    return (
+      <ContainerSelect>
+        <Label>{label}</Label>
+        <Select
+          defaultValue={colourOptions[0]}
+          options={colourOptions}
+          classNamePrefix='react-select'
+          className={className}
+          styles={optionStyles}
+        />
+      </ContainerSelect>
+    )
+  }
   return (
     <Select
       defaultValue={colourOptions[0]}
