@@ -30,7 +30,7 @@ const UserName = styled.p`
 export const Avatar = ({ src, userName }: AvatarProps) => {
   return (
     <Container>
-      <Img src={src} />
+      <Img src={src} alt={`Avatar do usuário ${userName}`} />
       <UserName>{userName}</UserName>
     </Container>
   )

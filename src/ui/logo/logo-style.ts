@@ -17,10 +17,11 @@ const heigth = {
 
 export const Logo = styled.img<LogoProps>`
   cursor: pointer;
-  heigth: ${(props) => heigth[props.size]};
+  height: ${(props) => heigth[props.size]};
   width: ${(props) => width[props.size]};
 `
 
 Logo.defaultProps = {
   src: logo,
+  alt: 'Logo Até Passar',
 }
