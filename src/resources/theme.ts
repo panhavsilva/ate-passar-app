@@ -7,7 +7,7 @@ export const theme: DefaultTheme = {
     secondary: '#281AC8',
     gradient: 'linear-gradient(#fd749b, #281ac8)',
     gradientSecondary: 'linear-gradient(#fc58b3, #feae68)',
-    gray: '#858585',
+    gray: '#757575',
     lightGray: '#F0F0F0',
     purple: '#B327F5',
     lightPurple: '#F3DBF9',

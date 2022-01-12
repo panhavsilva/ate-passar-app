@@ -30,8 +30,9 @@ export const SelectDefaultRaw = ({ options, placeholder, className, label }: Sel
   if (label) {
     return (
       <ContainerSelect>
-        <Label>{label}</Label>
+        <Label htmlFor='select'>{label}</Label>
         <Select
+          id='select'
           classNamePrefix='react-select'
           className={className}
           placeholder={placeholder}
@@ -105,7 +106,12 @@ export const SelectFooter = styled(SelectDefaultRaw)`
     font-size: 14px;
     margin-left: 4px;
   }
+  .react-select__input {
+    display: none;
+    visibility: hidden;
+  }
 `
+
 export const SelectDefault = styled(SelectDefaultRaw)`
   background: ${(props) => props.theme.colors.white};
   border: none;
@@ -125,7 +131,8 @@ export const SelectDefault = styled(SelectDefaultRaw)`
     font-size: 12px;
 
     :hover {
-    border: 1px solid ${(props) => props.theme.colors.purple};
+      border: 1px solid ${(props) => props.theme.colors.purple};
+    }
   }
   .react-select__indicator-separator {
     display: none;
@@ -153,5 +160,9 @@ export const SelectDefault = styled(SelectDefaultRaw)`
     color: ${(props) => props.theme.colors.purple};
     font-size: 12px;
     margin-left: 4px;
+  }
+  .react-select__input {
+    display: none;
+    visibility: hidden;
   }
 `

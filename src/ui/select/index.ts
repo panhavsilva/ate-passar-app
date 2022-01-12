@@ -1,2 +1,2 @@
-export * from './select'
+export * from './select-style'
 export * from './select-colors'

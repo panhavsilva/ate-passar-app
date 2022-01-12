@@ -19,7 +19,7 @@ const colourOptions: readonly ColourOption[] = [
   { value: 'amarelo', label: 'Amarelo', color: '#FFA92c' },
   { value: 'anil', label: 'Anil', color: '#281AC8' },
   { value: 'Azul', label: 'Azul', color: '#00B8D9' },
-  { value: 'cinza', label: 'Cinza', color: '#858585' },
+  { value: 'cinza', label: 'Cinza', color: '#757575' },
   { value: 'laranja', label: 'Laranja', color: '#FF8828' },
   { value: 'purpura', label: 'Púrpura', color: '#6F1265' },
   { value: 'rosa', label: 'Rosa', color: '#FD749B' },
@@ -60,7 +60,7 @@ const optionStyles: StylesConfig<ColourOption> = {
         : isSelected
           ? chroma.contrast(color, '#fff') > 2
             ? '#fff'
-            : '#858585'
+            : '#757575'
           : data.color,
       cursor: isDisabled ? 'not-allowed' : 'default',
       ':active': {
@@ -93,28 +93,18 @@ const ContainerSelect = styled.div`
 `
 
 const SelectColorsRaw = ({ className, label }: SelectProps) => {
-  if (label) {
-    return (
-      <ContainerSelect>
-        <Label>{label}</Label>
-        <Select
-          defaultValue={colourOptions[0]}
-          options={colourOptions}
-          classNamePrefix='react-select'
-          className={className}
-          styles={optionStyles}
-        />
-      </ContainerSelect>
-    )
-  }
   return (
-    <Select
-      defaultValue={colourOptions[0]}
-      options={colourOptions}
-      classNamePrefix='react-select'
-      className={className}
-      styles={optionStyles}
-    />
+    <ContainerSelect>
+      <Label htmlFor='select-color'>{label}</Label>
+      <Select
+        id='select-color'
+        defaultValue={colourOptions[0]}
+        options={colourOptions}
+        classNamePrefix='react-select'
+        className={className}
+        styles={optionStyles}
+      />
+    </ContainerSelect>
   )
 }
 
@@ -160,5 +150,9 @@ export const SelectColors = styled(SelectColorsRaw)`
   .react-select__single-value {
     color: ${(props) => props.theme.colors.gray};
     font-size: 12px;
+  }
+  .react-select__input {
+    display: none;
+    visibility: hidden;
   }
 `

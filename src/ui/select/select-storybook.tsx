@@ -1,4 +1,4 @@
-import { SelectFooter, SelectDefault, Options } from './select'
+import { SelectFooter, SelectDefault, Options } from './select-style'
 import { SelectColors } from './select-colors'
 
 type SelectPropsStoryBook = {
@@ -25,7 +25,6 @@ export const SelectStorybook = ({
       <SelectFooter
         options={options}
         placeholder={placeholder}
-        label={label}
       />
     )
   }
