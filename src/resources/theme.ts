@@ -12,7 +12,7 @@ export const theme: DefaultTheme = {
     purple: '#B327F5',
     lightPurple: '#F3DBF9',
     darkPurple: '#6F1265',
-    red: '#FF4949',
+    red: '#EB0000',
     green: '#5DF888',
     white: '#FFF',
   },
