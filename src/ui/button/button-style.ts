@@ -80,7 +80,7 @@ export const ButtonRed = styled(ButtonDefault)<ButtonProps>`
 `
 
 export const ButtonSecondary = styled(ButtonDefault)<ButtonProps>`
-  background-image: ${(props) => props.theme.colors.gradientSecondary};
+  background-image: linear-gradient(#E0008E, #FF9138);
 `
 
 export const BackgroundButtonTertiary = styled(ButtonDefault)`

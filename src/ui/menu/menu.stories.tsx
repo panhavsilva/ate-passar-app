@@ -6,7 +6,11 @@ export default {
   title: 'Example/Menu',
   component: MenuItemStorybook,
   decorators: [themeStyleDecorator],
-  argTypes: { onClick: { action: 'clicked' } },
+  parameters: {
+    actions: {
+      handles: ['click'],
+    },
+  },
 } as ComponentMeta<typeof MenuItemStorybook >
 
 const Template: ComponentStory<typeof MenuItemStorybook> = (args) => {
@@ -19,5 +23,5 @@ export const Menu = Template.bind({})
 Menu.args = {
   children: 'Cadendário',
   alt: 'Ilustração de um calendário',
-  active: true,
+  active: false,
 }
