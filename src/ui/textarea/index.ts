@@ -1,1 +1,1 @@
-export * from './textarea-style'
+export * from './textarea'

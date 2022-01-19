@@ -1,4 +1,4 @@
-import { MenuItem, MenuItemProps } from './menu-style'
+import { MenuItem, MenuItemProps } from './menu'
 import calendar from 'ui/icons/calendar.svg'
 import calendarActive from 'ui/icons/white-calendar.svg'
 

@@ -1,14 +1,6 @@
 import styled from 'styled-components/macro'
 
-export type MenuItemProps = {
-  children: string,
-  src: string,
-  alt: string,
-  href: string,
-  active: true | false,
-}
-
-const Container = styled.div`
+export const Container = styled.div`
   align-items: center;
   background-image: ${(props) => props.theme.colors.gradient};
   border-radius: 0px 100px 100px 0px;
@@ -18,19 +10,19 @@ const Container = styled.div`
   padding: 0px;
   width: 277px;
 `
-const Img = styled.img`
+export const Img = styled.img`
   height: 27px;
   margin: 0px;
   padding: 0px;
   width: 20px;
 `
-const Title = styled.p`
+export const Title = styled.p`
   color: ${(props) => props.theme.colors.gray};
   font-size: 12px;
   margin: 0px 0px 0px 20px;
   max-width: 140px;
 `
-const Link = styled.a`
+export const Link = styled.a`
   align-items: center;
   background-color: ${(props) => props.theme.colors.white};
   cursor: pointer;
@@ -50,7 +42,7 @@ const Link = styled.a`
     transition: height 0.3s linear;
   }
 `
-const LinkActive = styled.a`
+export const LinkActive = styled.a`
   align-items: center;
   background-image: ${(props) => props.theme.colors.gradient};
   border-radius: 0px 100px 100px 0px;
@@ -62,30 +54,9 @@ const LinkActive = styled.a`
   text-decoration: none;
   width: 277px;
 `
-const TitleActive = styled.p`
+export const TitleActive = styled.p`
   color: ${(props) => props.theme.colors.white};
   font-size: 12px;
   margin: 0px 0px 0px 20px;
   max-width: 140px;
 `
-
-export const MenuItem = ({ children, src, alt, href, active }: MenuItemProps) => {
-  if (active === false) {
-    return (
-      <Container>
-        <Link href={href}>
-          <Img src={src} alt={alt} />
-          <Title>{children}</Title>
-        </Link>
-      </Container>
-    )
-  }
-  return (
-    <Container>
-      <LinkActive href={href}>
-        <Img src={src} alt={alt} />
-        <TitleActive>{children}</TitleActive>
-      </LinkActive>
-    </Container>
-  )
-}

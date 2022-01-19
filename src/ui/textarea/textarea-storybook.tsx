@@ -1,4 +1,4 @@
-import { TextareaDefault } from './textarea-style'
+import { TextareaDefault } from './textarea'
 
 type TextareaPropsStoryBook = {
   placeholder: string,

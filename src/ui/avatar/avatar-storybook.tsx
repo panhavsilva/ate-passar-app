@@ -1,4 +1,4 @@
-import { Avatar, AvatarProps } from './avatar-style'
+import { Avatar, AvatarProps } from './avatar'
 
 export const AvatarStorybook = ({
   src,
