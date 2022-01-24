@@ -1,15 +1,32 @@
 import styled from 'styled-components/macro'
 
-export const Container = styled.div`
+type StyleProps = {
+  size: 'large' | 'small',
+}
+
+const height = {
+  large: '400px',
+  small: '397px',
+}
+const width = {
+  large: '643px',
+  small: '453px',
+}
+const bars = {
+  large: '535px',
+  small: '345px',
+}
+
+export const Container = styled.div<StyleProps>`
   border: 2px solid ${(props) => props.theme.colors.lightGray};
   border-radius: 10px;
   display: grid;
   grid-template-rows: 40px 1fr 24px;
   grid-template-areas: "title title" "yaxis shape" "yaxis xaxis";
   grid-template-columns: 53px 1fr;
-  height: 400px;
+  height: ${(props) => height[props.size]};
   padding: 24px;
-  width: 643px;
+  width: ${(props) => width[props.size]};
 `
 export const Title = styled.p`
   color: ${(props) => props.theme.colors.gray};
@@ -39,11 +56,19 @@ export const YAxis = styled.div`
   border-right: 2px solid ${(props) => props.theme.colors.lightGray};
   display: grid;
   font-size: 12px;
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr) 40px;
   grid-area: yaxis;
-  height: 90%;
+  height: 100%;
   padding: 0px;
-  width: 53px;
+  width: 100%;
+`
+export const Hours = styled.p`
+  color: ${(props) => props.theme.colors.gray};
+  font-size: 12px;
+  height: 15px;
+  margin: 0;
+  padding: 0px;
+  width: 100%;
 `
 export const Shape = styled.div`
   display: grid;
@@ -57,13 +82,13 @@ export const Grid = styled.div`
   height: 100%;
   width: 100%;
 `
-export const Bars = styled.div`
+export const Bars = styled.div<StyleProps>`
   align-items: baseline;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   height: 276px;
   position: absolute;
-  width: 535px;
+  width: ${(props) => bars[props.size]};
 `
 type BarOfDayProps = {
   size: string,

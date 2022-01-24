@@ -1,9 +1,9 @@
 import * as G from './graphic-style'
 
 export type GraphicProps = {
+  size: 'large' | 'small',
   title: string,
   xAxis: [string, string, string, string, string, string, string],
-  yAxis: [string, string, string, string],
   data: {
     mon: number,
     tues: number,
@@ -26,7 +26,32 @@ const maxValue = (minutes: number[]) => {
   return result
 }
 
-export const Graphic = ({ title, xAxis, yAxis, data }: GraphicProps) => {
+const convertMinutesHours = (minute: number) => {
+  const hours = Math.floor(minute / 60)
+  const min = minute % 60
+  const textHours = (`00${hours}`).slice(-2)
+  const textMinutos = (`00${min}`).slice(-2)
+
+  return `${textHours}:${textMinutos}`
+}
+
+const ranges = (minutes: number[]) => {
+  const max = maxValue(minutes)
+  const middle = Math.round(max / 2)
+  const betweenMaxMiddle = Math.round((max - middle) / 2 + middle)
+  const min = 0
+  const betweenMiddleMin = Math.round(middle / 2)
+
+  return [
+    convertMinutesHours(max),
+    convertMinutesHours(betweenMaxMiddle),
+    convertMinutesHours(middle),
+    convertMinutesHours(betweenMiddleMin),
+    convertMinutesHours(min),
+  ]
+}
+
+export const Graphic = ({ size, title, xAxis, data }: GraphicProps) => {
   const minutes = [
     data.mon,
     data.tues,
@@ -37,13 +62,14 @@ export const Graphic = ({ title, xAxis, yAxis, data }: GraphicProps) => {
     data.sun,
   ]
   const oneMinuteSize = (276 / maxValue(minutes))
+  const yAxis = ranges(minutes)
 
   return (
-    <G.Container>
+    <G.Container size={size}>
       <G.Title>{title}</G.Title>
       <G.YAxis>
         {yAxis.map((item) => (
-          <p key={item}>{item}</p>
+          <G.Hours key={item}>{item}</G.Hours>
         ))}
       </G.YAxis>
       <G.Shape>
@@ -51,7 +77,7 @@ export const Graphic = ({ title, xAxis, yAxis, data }: GraphicProps) => {
         <G.Grid />
         <G.Grid />
         <G.Grid />
-        <G.Bars>
+        <G.Bars size={size}>
           {minutes.map((item) => (
             <G.BarOfDay size={(item * oneMinuteSize) + 'px'} key={item} />
           ))}

@@ -26,8 +26,8 @@ const data = {
 
 export const Graphic = Template.bind({})
 Graphic.args = {
+  size: 'large',
   title: 'Últimos 7 dias',
   xAxis: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
-  yAxis: ['02:00', '01:30', '01:00', '00:30'],
   data: data,
 }

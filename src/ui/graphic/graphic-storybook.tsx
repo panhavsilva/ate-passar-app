@@ -3,10 +3,10 @@ import { Graphic, GraphicProps } from './graphic'
 export const GraphicStorybook = ({
   title,
   xAxis,
-  yAxis,
   data,
+  size,
 }: GraphicProps) => {
   return (
-    <Graphic title={title} xAxis={xAxis} yAxis={yAxis} data={data} />
+    <Graphic size={size} title={title} xAxis={xAxis} data={data} />
   )
 }
