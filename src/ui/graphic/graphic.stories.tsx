@@ -14,20 +14,19 @@ const Template: ComponentStory<typeof GraphicStorybook> = (args) => {
   )
 }
 
-const data = {
-  mon: 120,
-  tues: 60,
-  wed: 90,
-  thur: 30,
-  fri: 70,
-  sat: 150,
-  sun: 130,
-}
+const data = [
+  { label: 'Seg', value: 7200 },
+  { label: 'Ter', value: 3600 },
+  { label: 'Qua', value: 5400 },
+  { label: 'Qui', value: 9000 },
+  { label: 'Sex', value: 6480 },
+  { label: 'Sáb', value: 9720 },
+  { label: 'Dom', value: 1800 },
+]
 
 export const Graphic = Template.bind({})
 Graphic.args = {
   size: 'large',
   title: 'Últimos 7 dias',
-  xAxis: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
   data: data,
 }

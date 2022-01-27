@@ -1,22 +1,19 @@
 import * as G from './graphic-style'
 
+type Data = {
+  label: string,
+  value: number,
+}
+
 export type GraphicProps = {
   size: 'large' | 'small',
   title: string,
-  xAxis: [string, string, string, string, string, string, string],
-  data: {
-    mon: number,
-    tues: number,
-    wed: number,
-    thur: number,
-    fri: number,
-    sat: number,
-    sun: number,
-  },
+  data: Data[],
 }
 
-const maxValue = (minutes: number[]) => {
-  const result = minutes.reduce(function (accumulated, current) {
+const maxValue = (data: Data[]) => {
+  const seconds = data.map((item) => item.value)
+  const result = seconds.reduce(function (accumulated, current) {
     if (accumulated > current) {
       return accumulated
     }
@@ -26,50 +23,45 @@ const maxValue = (minutes: number[]) => {
   return result
 }
 
-const convertMinutesHours = (minute: number) => {
-  const hours = Math.floor(minute / 60)
-  const min = minute % 60
-  const textHours = (`00${hours}`).slice(-2)
-  const textMinutos = (`00${min}`).slice(-2)
-
-  return `${textHours}:${textMinutos}`
+const convertSecondsToHhMmSs = (totalSeconds: number) => {
+  const hours = Math.floor(totalSeconds / 3600)
+  const min = Math.floor(totalSeconds % 3600 / 60)
+  const seconds = Math.floor(totalSeconds % 60)
+  const includesZero = (number: number) => {
+    if (number < 10) { return `0${number}` }
+    return number
+  }
+  return `${includesZero(hours)}:${includesZero(min)}:${includesZero(seconds)}`
 }
 
-const ranges = (minutes: number[]) => {
-  const max = maxValue(minutes)
+const ranges = (data: Data[]) => {
+  const max = maxValue(data)
   const middle = Math.round(max / 2)
   const betweenMaxMiddle = Math.round((max - middle) / 2 + middle)
   const min = 0
   const betweenMiddleMin = Math.round(middle / 2)
 
   return [
-    convertMinutesHours(max),
-    convertMinutesHours(betweenMaxMiddle),
-    convertMinutesHours(middle),
-    convertMinutesHours(betweenMiddleMin),
-    convertMinutesHours(min),
+    convertSecondsToHhMmSs(max),
+    convertSecondsToHhMmSs(betweenMaxMiddle),
+    convertSecondsToHhMmSs(middle),
+    convertSecondsToHhMmSs(betweenMiddleMin),
+    convertSecondsToHhMmSs(min),
   ]
 }
 
-export const Graphic = ({ size, title, xAxis, data }: GraphicProps) => {
-  const minutes = [
-    data.mon,
-    data.tues,
-    data.wed,
-    data.thur,
-    data.fri,
-    data.sat,
-    data.sun,
-  ]
-  const oneMinuteSize = (276 / maxValue(minutes))
-  const yAxis = ranges(minutes)
+export const Graphic = ({ size, title, data }: GraphicProps) => {
+  const oneSecondSize = (276 / maxValue(data))
+  const yAxis = ranges(data)
 
   return (
     <G.Container size={size}>
       <G.Title>{title}</G.Title>
       <G.YAxis>
         {yAxis.map((item) => (
-          <G.Hours key={item}>{item}</G.Hours>
+          <G.Hours key={item} title={item}>
+            {item.match(/\d\d:\d\d/g)}
+          </G.Hours>
         ))}
       </G.YAxis>
       <G.Shape>
@@ -78,14 +70,17 @@ export const Graphic = ({ size, title, xAxis, data }: GraphicProps) => {
         <G.Grid />
         <G.Grid />
         <G.Bars size={size}>
-          {minutes.map((item) => (
-            <G.BarOfDay size={(item * oneMinuteSize) + 'px'} key={item} />
+          {data.map((item) => (
+            <G.BarOfDay
+              size={(item.value * oneSecondSize) + 'px'}
+              key={item.value}
+            />
           ))}
         </G.Bars>
       </G.Shape>
       <G.XAxis>
-        {xAxis.map((item) => (
-          <G.Day key={item}>{item}</G.Day>
+        {data.map((item) => (
+          <G.Day key={item.label}>{item.label}</G.Day>
         ))}
       </G.XAxis>
     </G.Container>
