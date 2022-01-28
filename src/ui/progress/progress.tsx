@@ -1,32 +1,70 @@
 import * as P from './progress-style'
-import check from 'ui/icons/gray-check.svg'
-import calendar from 'ui/icons/gray-calendar.svg'
 
+type Data = {
+  allSubjects: number,
+  completedSubjects: number,
+  date: string,
+}
 export type ProgressProps = {
   size: 'large' | 'small',
-  title: string,
+  data: Data,
 }
 
-export const Progress = ({ size, title }: ProgressProps) => {
+const calculatePercentage = (data: Data) => {
+  const result = (data.completedSubjects * 100) / data.allSubjects
+  return Math.round(result)
+}
+
+export const Progress = ({ size, data }: ProgressProps) => {
+  const sizeOnePercent = () => {
+    if (size === 'small') {
+      return Math.round((310 / 100) * calculatePercentage(data)) + 'px'
+    }
+    return Math.round((360 / 100) * calculatePercentage(data)) + 'px'
+  }
+
   return (
     <P.Container size={size}>
-      <P.Title size={size}>{title}</P.Title>
+      <P.Title size={size}>
+        {size === 'small' && 'Seu progresso geral'}
+        {size === 'large' && 'Seu progresso nesta disciplina'}
+      </P.Title>
       <P.ContainerProgressBar size={size}>
         <P.ProgressBar size={size}>
-          <P.PercentBar />
+          <P.PercentBar width={sizeOnePercent()} />
         </P.ProgressBar>
-        <P.Percent size={size}> 100% </P.Percent>
+        <P.Percent size={size}>
+          {calculatePercentage(data) + '%'}
+        </P.Percent>
       </P.ContainerProgressBar>
-      <P.Information size={size}>
-        <div>
-          <P.Image size={size} src={check} alt='Circulo com check' />
-        </div>
-        <div>a</div>
-        <div>
-          <P.Image size={size} src={calendar} alt='Calendário' />
-        </div>
-        <div>a</div>
-      </P.Information>
+      <P.ContainerInformation size={size}>
+        <P.InformationCard size={size}>
+          {size === 'small' && <P.CheckIconSmall />}
+          {size === 'large' && <P.CheckIconLarge />}
+          <div>
+            <P.InformationText type='subtitle' size={size}>
+              {size === 'small' && 'Conclusões'}
+              {size === 'large' && 'Conteúdos concluidos'}
+            </P.InformationText>
+            <P.InformationText type='text' size={size}>
+              {data.completedSubjects}/{data.allSubjects}
+            </P.InformationText>
+          </div>
+        </P.InformationCard>
+        <P.InformationCard size={size}>
+          {size === 'small' && <P.CalendarIconSmall />}
+          {size === 'large' && <P.CalendarIconLarge />}
+          <div>
+            <P.InformationText type='subtitle' size={size}>
+              {size === 'small' && 'Última atividade'}
+              {size === 'large' && 'Último estudo desta matéria'}
+            </P.InformationText>
+            <P.InformationText type='text' size={size}>
+              {data.date}
+            </P.InformationText>
+          </div>
+        </P.InformationCard>
+      </P.ContainerInformation>
     </P.Container>
   )
 }

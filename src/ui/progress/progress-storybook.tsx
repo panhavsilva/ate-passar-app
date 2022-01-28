@@ -2,9 +2,9 @@ import { Progress, ProgressProps } from './progress'
 
 export const ProgressStorybook = ({
   size,
-  title,
+  data,
 }: ProgressProps) => {
   return (
-    <Progress size={size} title={title} />
+    <Progress size={size} data={data} />
   )
 }
