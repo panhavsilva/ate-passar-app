@@ -43,7 +43,7 @@ Para copiar o projeto, utilize os comandos:
   #install the dependencies
   yarn start
   #or
-  npm 
+  npm install
 
   #start the server
   npm run dev
