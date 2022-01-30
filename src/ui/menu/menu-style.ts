@@ -31,15 +31,13 @@ export const Link = styled.a`
   height: 58px;
   padding: 0px 0px 0px 40px;
   text-decoration: none;
+  transition: all 0.3s ease-in-out;
   width: 277px;
+  transform: scale(1,1);
 
   :hover {
+    transform: scale(0.99, 0.96);
     border-radius: 0px 100px 100px 0px;
-    height: 54px;
-    width: 273px;
-
-    transition: width 0.3s linear;
-    transition: height 0.3s linear;
   }
 `
 export const LinkActive = styled.a`
