@@ -15,8 +15,8 @@ const Template: ComponentStory<typeof ProgressStorybook> = (args) => {
 }
 
 const data = {
-  allSubjects: 10,
-  completedSubjects: 5,
+  all: 10,
+  completed: 5,
   date: '31/10/2021',
 }
 

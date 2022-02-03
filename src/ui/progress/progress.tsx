@@ -1,8 +1,8 @@
 import * as P from './progress-style'
 
 type Data = {
-  allSubjects: number,
-  completedSubjects: number,
+  all: number,
+  completed: number,
   date: string,
 }
 export type ProgressProps = {
@@ -11,7 +11,7 @@ export type ProgressProps = {
 }
 
 const calculatePercentage = (data: Data) => {
-  const result = (data.completedSubjects * 100) / data.allSubjects
+  const result = (data.completed * 100) / data.all
   return Math.round(result)
 }
 
@@ -47,7 +47,7 @@ export const Progress = ({ size, data }: ProgressProps) => {
               {size === 'large' && 'Conteúdos concluidos'}
             </P.InformationText>
             <P.InformationText type='text' size={size}>
-              {data.completedSubjects}/{data.allSubjects}
+              {data.completed}/{data.all}
             </P.InformationText>
           </div>
         </P.InformationCard>
