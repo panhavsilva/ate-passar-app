@@ -1,9 +1,10 @@
 import * as P from './progress-style'
+import { motion } from 'framer-motion'
 
 type Data = {
   all: number,
   completed: number,
-  date: string,
+  date: Date,
 }
 export type ProgressProps = {
   size: 'large' | 'small',
@@ -13,6 +14,10 @@ export type ProgressProps = {
 const calculatePercentage = (data: Data) => {
   const result = (data.completed * 100) / data.all
   return Math.round(result)
+}
+const formatDate = (date: Date) => {
+  const formattedDate = date.getDay() + '/' + date.getMonth() + '/' + date.getFullYear()
+  return formattedDate
 }
 
 export const Progress = ({ size, data }: ProgressProps) => {
@@ -31,7 +36,17 @@ export const Progress = ({ size, data }: ProgressProps) => {
       </P.Title>
       <P.ContainerProgressBar size={size}>
         <P.ProgressBar size={size}>
-          <P.PercentBar width={sizeOnePercent()} />
+          <motion.div
+            className='percent-bar'
+            initial={{ width: 0 }}
+            animate={{ width: sizeOnePercent() }}
+            transition={{
+              ease: 'easeOut',
+              duration: 2,
+              stiffness: 260,
+              damping: 20,
+            }}
+          />
         </P.ProgressBar>
         <P.Percent size={size}>
           {calculatePercentage(data) + '%'}
@@ -60,7 +75,7 @@ export const Progress = ({ size, data }: ProgressProps) => {
               {size === 'large' && 'Último estudo desta matéria'}
             </P.InformationText>
             <P.InformationText type='text' size={size}>
-              {data.date}
+              {formatDate(data.date)}
             </P.InformationText>
           </div>
         </P.InformationCard>

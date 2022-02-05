@@ -26,6 +26,13 @@ export const Container = styled.div<StyleProps>`
   height: ${(props) => height[props.size]};
   padding: 30px 20px;
   width: ${(props) => width[props.size]};
+
+  & .percent-bar{
+    background-image: ${(props) => props.theme.colors.gradient};
+    border-radius: 50px;
+    height: 100%;
+    position: absolute;
+  }
 `
 const title = {
   small: '16px',
@@ -65,16 +72,6 @@ export const ProgressBar = styled.div<StyleProps>`
   width: ${(props) => progressBarWidth[props.size]};
 `
 
-type PercentBarProps = {
-  width: string
-}
-export const PercentBar = styled.div<PercentBarProps>`
-  background-image: ${(props) => props.theme.colors.gradient};
-  border-radius: 50px;
-  height: 100%;
-  position: absolute;
-  width: ${(props) => props.width};
-`
 const fontSizePercent = {
   small: '12px',
   large: '18px',
@@ -136,7 +133,7 @@ export const InformationText = styled.p<InformationTextProps>`
   text-align: ${(props) => textAlign[props.type]};
 `
 export const CheckIconLarge = styled(Check)`
-  height: 40px;
+  height: 49px;
   width: 49px;
 `
 export const CheckIconSmall = styled(CheckSmall)`

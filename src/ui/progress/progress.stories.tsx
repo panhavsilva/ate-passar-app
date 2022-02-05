@@ -17,7 +17,7 @@ const Template: ComponentStory<typeof ProgressStorybook> = (args) => {
 const data = {
   all: 10,
   completed: 5,
-  date: '31/10/2021',
+  date: new Date(),
 }
 
 export const Progress = Template.bind({})
