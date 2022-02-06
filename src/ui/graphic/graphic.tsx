@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import * as G from './graphic-style'
 
 type Data = {
@@ -71,9 +72,17 @@ export const Graphic = ({ size, title, data }: GraphicProps) => {
         <G.Grid />
         <G.Bars size={size}>
           {data.map((item) => (
-            <G.BarOfDay
-              size={(item.value * oneSecondSize) + 'px'}
-              key={item.value}
+            <motion.div
+              className='bar-day'
+              initial={{ height: 0 }}
+              animate={{ height: (item.value * oneSecondSize) + 'px' }}
+              transition={{
+                ease: 'easeOut',
+                duration: 2,
+                stiffness: 260,
+                damping: 20,
+              }}
+              key={item.label}
             />
           ))}
         </G.Bars>

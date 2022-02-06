@@ -83,20 +83,17 @@ export const Grid = styled.div`
   width: 100%;
 `
 export const Bars = styled.div<StyleProps>`
-  align-items: baseline;
+  align-items: flex-end;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   height: 276px;
   position: absolute;
   width: ${(props) => bars[props.size]};
-`
-type BarOfDayProps = {
-  size: string,
-}
-export const BarOfDay = styled.div<BarOfDayProps>`
-  background-image: ${(props) => props.theme.colors.gradient};
-  border-radius: 55px 55px 0px 0px;
-  height: ${(props) => props.size};
-  margin-left: 15px;
-  width: 15px;
+
+  & .bar-day{
+    background-image: ${(props) => props.theme.colors.gradient};
+    border-radius: 55px 55px 0px 0px;
+    margin-left: 15px;
+    width: 15px;
+  }
 `

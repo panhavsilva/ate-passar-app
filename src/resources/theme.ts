@@ -9,7 +9,7 @@ export const theme: DefaultTheme = {
     gradientSecondary: 'linear-gradient(#fc58b3, #FE9439)',
     gray: '#636363',
     lightGray: '#F0F0F0',
-    purple: '#B327F5',
+    purple: '#9B0ae1',
     lightPurple: '#F3DBF9',
     darkPurple: '#6F1265',
     red: '#EB0000',
